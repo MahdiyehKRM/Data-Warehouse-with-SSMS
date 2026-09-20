@@ -3,8 +3,8 @@
 Project:        Northwind Data Warehouse (Modern BI Architecture)
 Layer:          Staging Area (stage_dw)
 File Name:      Northwind_Stage_LoadData.sql
-Author:         Reza Afkhamnia
-Date:           2026-08-08
+Author:         Mahdieh Karimi
+Date:           2026-09-20
 Description:    Modular Insert/Update scripts for initial data ingestion. 
                 These scripts use the TRUNCATE-AND-LOAD pattern (Full Load) 
                 to ensure the staging layer is a clean replica of source data.

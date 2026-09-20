@@ -3,8 +3,8 @@
 Project:        Northwind Data Warehouse (Modern BI Architecture)
 Layer:          Staging Area (stage_dw)
 File Name:      Northwind_Stage_CreateTables.sql
-Author:         Reza Afkhamnia
-Date:           2026-08-08
+Author:         Mahdieh Karimi
+Date:           2026-09-20
 Description:    This script initializes the schema and table structures for the 
                 Staging Layer. It follows strict naming conventions (snake_case).
                 Each table reflects a source entity from the Northwind OLTP database,
