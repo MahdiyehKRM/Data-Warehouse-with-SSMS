@@ -322,7 +322,7 @@ The fact table contains the following analytical measures:
 
 ## 8. Star Schema Diagram
 
-![DDS Database Diagram](screenshots/DDS_database_diagram.png)
+![DDS Database Diagram](screenshots/core_dw.png)
 
 The final Sales Data Mart follows a **Star Schema**, with `fact_order` at the center and the dimensional tables surrounding it.
 
