@@ -31,10 +31,10 @@ The project transforms the classic **Northwind OLTP database** into an analytics
 12. [Execution Guide](#12-execution-guide)
 13. [Data Quality](#13-data-quality)
 14. [KPIs](#14-kpis)
-15. [ETL Stored Procedures](#16-etl-stored-procedures)
-16. [Unknown Members](#17-unknown-members)
-17. [Data Dictionary](#18-data-dictionary)
-18. [Security and Governance](#19-security-and-governance)
+15. [ETL Stored Procedures](#15-etl-stored-procedures)
+16. [Unknown Members](#16-unknown-members)
+17. [Data Dictionary](#17-data-dictionary)
+18. [Security and Governance](#18-security-and-governance)
 
 ---
 
@@ -322,9 +322,11 @@ The fact table contains the following analytical measures:
 
 ## 8. Star Schema Diagram
 
-![Core DW Star Schema](screenshots/core_dw.png)
+![DDS Database Diagram](screenshots/DDS_database_diagram.png)
 
-The final Sales Data Mart follows a **Star Schema**.
+The final Sales Data Mart follows a **Star Schema**, with `fact_order` at the center and the dimensional tables surrounding it.
+
+The physical DDS database structure contains:
 
 ```text
                          dim_customer
@@ -340,6 +342,8 @@ dim_employee ──────── fact_order ──────── dim_pr
         dim_supplier     dim_shipper       dim_date
 ```
 
+The database diagram above provides the physical representation of the Data Mart tables and their relationships.
+
 ### Fact Table Grain
 
 The grain of `fact_order` is:
@@ -347,6 +351,38 @@ The grain of `fact_order` is:
 > **One row per Order ID + Product ID**
 
 This grain allows analysis of sales at the individual order-line level.
+
+### Data Warehouse Validation
+
+After the ETL process completes, the row counts of the main DDS tables are validated to ensure that dimensions and the fact table have been successfully populated.
+
+![DDS Row Counts](screenshots/final_dw_row_count.png)
+
+The row-count validation provides a quick verification of the loaded Data Warehouse objects.
+
+### Final Analytical Output
+
+The final Data Warehouse can be queried by joining the fact table with its related dimensions.
+
+![Final Data Warehouse Output](screenshots/final_output_DW.png)
+
+The output demonstrates an analytical result combining:
+
+* Order information
+* Order dates
+* Customers
+* Products
+* Employees
+* Shippers
+* Geography
+* Quantity
+* Unit price
+* Discount
+* Gross amount
+* Net amount
+* Freight amount
+
+This confirms that the final Sales Data Mart can support integrated analytical queries across multiple dimensions.
 
 ---
 
@@ -363,6 +399,9 @@ Data-Warehouse-with-SSMS/
 │   ├── core_dw.png
 │   ├── data_flow.png
 │   ├── data_warehouse_architecture.png
+│   ├── DDS_database_diagram.png
+│   ├── final_dw_row_count.png
+│   ├── final_output_DW.png
 │   ├── source_data_diagram.png
 │   ├── staging_load_execution.png
 │   └── staging_load_log.png
@@ -559,7 +598,6 @@ The Sales Data Mart supports common business metrics such as:
 These measures can be used directly in SQL queries or exposed to Power BI.
 
 ---
-
 
 ## 15. ETL Stored Procedures
 
