@@ -17,27 +17,28 @@ The project transforms the classic **Northwind OLTP database** into an analytics
 
 ## Table of Contents
 
-1. [Overview](#1-overview)
-2. [Architecture](#2-architecture)
-3. [Architecture Diagram](#3-architecture-diagram)
-4. [Data Flow](#4-data-flow)
-5. [Source Database](#5-source-database)
-6. [Staging Layer](#6-staging-layer)
-7. [DDS Layer — Star Schema](#7-dds-layer--star-schema)
-8. [Star Schema Diagram](#8-star-schema-diagram)
-9. [Project Structure](#9-project-structure)
-10. [Technologies](#10-technologies)
-11. [Documentation](#11-documentation)
-12. [Execution Guide](#12-execution-guide)
-13. [Data Quality](#13-data-quality)
-14. [KPIs](#14-kpis)
-15. [Screenshots](#15-screenshots)
-16. [ETL Stored Procedures](#16-etl-stored-procedures)
-17. [Unknown Members](#17-unknown-members)
-18. [Data Dictionary](#18-data-dictionary)
-19. [Security and Governance](#19-security-and-governance)
-20. [Future Enhancements](#20-future-enhancements)
-21. [License](#21-license)
+1. Overview
+2. Architecture
+3. Architecture Diagram
+4. Data Flow
+5. Source Database
+6. Staging Layer
+7. DDS Layer — Star Schema
+8. Star Schema Diagram
+9. Project Structure
+10. Technologies
+11. Documentation
+12. Execution Guide
+13. Data Quality
+14. KPIs
+15. ETL Stored Procedures
+16. Unknown Members
+17. Data Dictionary
+18. Security and Governance
+19. Future Enhancements
+20. License
+21. Acknowledgements
+22. Author
 
 ---
 
@@ -124,8 +125,6 @@ The architecture separates **data ingestion, transformation, dimensional modelin
 
 ## 3. Architecture Diagram
 
-![Data Warehouse Architecture](screenshots/data_warehouse_architecture.png)
-
 The architecture diagram represents the complete data flow from the Northwind source system to the final consumption layer.
 
 The DDS/Core DW area contains:
@@ -137,8 +136,6 @@ The DDS/Core DW area contains:
 ---
 
 ## 4. Data Flow
-
-![Data Flow](screenshots/data_flow.png)
 
 The project implements the following data lineage:
 
@@ -198,8 +195,6 @@ The Sales Data Mart contains:
 
 ## 5. Source Database
 
-![Source Database Diagram](screenshots/source_data_diagram.png)
-
 The project uses the classic **Northwind** database as its OLTP source.
 
 ### Tables Used
@@ -254,11 +249,7 @@ Record Execution Log
 
 Each staging table is loaded independently using `TRY/CATCH` error handling.
 
-![Staging Load Execution](screenshots/staging_load_execution.png)
-
 ### ETL Execution Log
-
-![Staging Load Log](screenshots/staging_load_log.png)
 
 The execution log records:
 
@@ -325,8 +316,6 @@ The fact table contains the following analytical measures:
 
 ## 8. Star Schema Diagram
 
-![Core DW Star Schema](screenshots/core_dw.png)
-
 The final Sales Data Mart follows a **Star Schema**.
 
 ```text
@@ -336,11 +325,11 @@ The final Sales Data Mart follows a **Star Schema**.
 dim_employee ──────── fact_order ──────── dim_product
                               │
                               │
-                     dim_geography
+                         dim_geography
                               │
-              ┌───────────────┼───────────────┐
-              │               │               │
-        dim_supplier     dim_shipper       dim_date
+               ┌───────────────┼───────────────┐
+               │               │               │
+         dim_supplier     dim_shipper       dim_date
 ```
 
 ### Fact Table Grain
@@ -361,14 +350,6 @@ Data-Warehouse-with-SSMS/
 ├── docs/
 │   ├── DATA_CATALOG.md
 │   └── SOURCE_ANALYSIS.md
-│
-├── screenshots/
-│   ├── core_dw.png
-│   ├── data_flow.png
-│   ├── data_warehouse_architecture.png
-│   ├── source_data_diagram.png
-│   ├── staging_load_execution.png
-│   └── staging_load_log.png
 │
 ├── sql/
 │   ├── Core DW 01-Northwind_Sale_CreateTables.sql
@@ -402,13 +383,13 @@ Detailed documentation is available in the `docs/` directory.
 
 ### Data Catalog
 
-[`docs/DATA_CATALOG.md`](docs/DATA_CATALOG.md)
+`docs/DATA_CATALOG.md`
 
 Contains metadata and definitions for the Data Warehouse tables and columns.
 
 ### Source Analysis
 
-[`docs/SOURCE_ANALYSIS.md`](docs/SOURCE_ANALYSIS.md)
+`docs/SOURCE_ANALYSIS.md`
 
 Contains the analysis of the Northwind source database and the tables used by the Data Warehouse.
 
@@ -563,37 +544,7 @@ These measures can be used directly in SQL queries or exposed to Power BI.
 
 ---
 
-## 15. Screenshots
-
-All project diagrams and execution screenshots are available in the `screenshots/` directory.
-
-### Architecture
-
-![Data Warehouse Architecture](screenshots/data_warehouse_architecture.png)
-
-### Data Flow
-
-![Data Flow](screenshots/data_flow.png)
-
-### Source Database
-
-![Source Database](screenshots/source_data_diagram.png)
-
-### Core Data Warehouse
-
-![Core DW](screenshots/core_dw.png)
-
-### Staging Execution
-
-![Staging Execution](screenshots/staging_load_execution.png)
-
-### ETL Log
-
-![Staging Log](screenshots/staging_load_log.png)
-
----
-
-## 16. ETL Stored Procedures
+## 15. ETL Stored Procedures
 
 ### Staging
 
@@ -668,18 +619,18 @@ This provides controlled transaction handling and error propagation.
 
 ---
 
-## 17. Unknown Members
+## 16. Unknown Members
 
 All dimensions contain an **Unknown Member** with surrogate key `0`.
 
 | Dimension       | Unknown Key |
-| --------------- | ----------: |
-| `dim_customer`  |         `0` |
-| `dim_employee`  |         `0` |
-| `dim_supplier`  |         `0` |
-| `dim_product`   |         `0` |
-| `dim_shipper`   |         `0` |
-| `dim_geography` |         `0` |
+| --------------- | ----------- |
+| `dim_customer`  | `0`         |
+| `dim_employee`  | `0`         |
+| `dim_supplier`  | `0`         |
+| `dim_product`   | `0`         |
+| `dim_shipper`   | `0`         |
+| `dim_geography` | `0`         |
 
 Unknown Members prevent fact-loading failures when a source record contains a missing or unmatched dimension value.
 
@@ -691,7 +642,7 @@ COALESCE(dc.customer_key, 0) AS customer_key
 
 ---
 
-## 18. Data Dictionary
+## 17. Data Dictionary
 
 ### Fact — `sale.fact_order`
 
@@ -732,11 +683,11 @@ The main dimensions are:
 
 For complete column-level metadata, see:
 
-[`docs/DATA_CATALOG.md`](docs/DATA_CATALOG.md)
+`docs/DATA_CATALOG.md`
 
 ---
 
-## 19. Security and Governance
+## 18. Security and Governance
 
 The project identifies several fields as potentially sensitive and demonstrates basic governance considerations.
 
@@ -760,7 +711,7 @@ Examples include:
 
 ---
 
-## 20. Future Enhancements
+## 19. Future Enhancements
 
 Potential future improvements include:
 
@@ -776,13 +727,13 @@ Potential future improvements include:
 
 ---
 
-## 21. License
+## 20. License
 
 This project is provided for **educational and portfolio purposes**.
 
 ---
 
-## Acknowledgements
+## 21. Acknowledgements
 
 * **Northwind** — Microsoft sample database used as the source system
 * **Kimball Dimensional Modeling** — Dimensional modeling principles
@@ -791,7 +742,7 @@ This project is provided for **educational and portfolio purposes**.
 
 ---
 
-## Author
+## 22. Author
 
 **Mahdieh Karimi**
 Data Warehouse Developer
