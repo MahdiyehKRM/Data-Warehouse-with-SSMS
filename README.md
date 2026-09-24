@@ -35,8 +35,6 @@ The project transforms the classic **Northwind OLTP database** into an analytics
 16. [Unknown Members](#17-unknown-members)
 17. [Data Dictionary](#18-data-dictionary)
 18. [Security and Governance](#19-security-and-governance)
-19. [Future Enhancements](#20-future-enhancements)
-20. [License](#21-license)
 
 ---
 
@@ -727,28 +725,6 @@ Examples include:
 * Protect sensitive information
 * Use curated reporting views for consumers
 * Never store credentials or secrets in the repository
-
----
-
-## 19. Future Enhancements
-
-Potential future improvements include:
-
-* Implement SCD Type 2 for selected dimensions
-* Add incremental loading for `fact_order`
-* Add additional Data Marts
-* Build Power BI dashboards
-* Add automated ETL unit tests
-* Implement CI/CD for SQL deployment
-* Introduce Master Data Management
-* Add metadata-based Data Lineage
-* Implement Row-Level Security where required
-
----
-
-## 20. License
-
-This project is provided for **educational and portfolio purposes**.
 
 ---
 
