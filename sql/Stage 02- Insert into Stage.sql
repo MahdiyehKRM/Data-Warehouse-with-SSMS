@@ -3,7 +3,7 @@
 Project:        Northwind Data Warehouse (Modern BI Architecture)
 Layer:          Staging Area (stage_dw)
 File Name:      Northwind_Stage_LoadData.sql
-Author:         Mahdieh Karimi
+Author:         Mahdieh Karimi Sahel Mahdavinejad
 Date:           2026-09-20
 Description:    Modular Insert/Update scripts for initial data ingestion. 
                 These scripts use the TRUNCATE-AND-LOAD pattern (Full Load) 

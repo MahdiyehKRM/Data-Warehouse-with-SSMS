@@ -3,7 +3,7 @@
 Project:        Northwind Data Warehouse
 Layer:          Data Delivery Store (DDS) - Sales Data Mart
 File Name:      Northwind_Sale_CreateTables.sql
-Author:         Mahdieh Karimi
+Author:         Mahdieh Karimi Sahel Mahdavinejad
 Description:    Creates Dimension and Fact tables for the Northwind Sales Data Mart.
 
                 Architecture:

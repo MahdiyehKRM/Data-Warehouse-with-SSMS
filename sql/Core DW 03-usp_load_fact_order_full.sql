@@ -3,7 +3,7 @@
 Project:        Northwind Data Warehouse
 Layer:          DDS - Sales Data Mart
 Object Name:    sale.usp_load_fact_order_full
-Author:         Mahdieh Karimi
+Author:         Mahdieh Karimi Sahel Mahdavinejad
 Description:    Performs a Full Load for the Sales Order Fact table.
 
                 Full Load Strategy:

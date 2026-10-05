@@ -3,7 +3,7 @@
 Project:        Northwind Data Warehouse (Modern BI Architecture)
 Layer:          Staging Area (ETL Automation)
 Object Name:    stage.usp_load_stg_northwind_full
-Author:         Mahdieh Karimi
+Author:         Mahdieh Karimi Sahel Mahdavinejad
 Date:           2026-09-20
 Description:    Main orchestration procedure for the Northwind Staging layer. 
                 - Implements TRY...CATCH for robust error handling.
