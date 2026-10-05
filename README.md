@@ -4,7 +4,7 @@ An end-to-end **Business Intelligence and Data Warehouse project** built with **
 
 The project transforms the classic **Northwind OLTP database** into an analytics-ready **Sales Data Mart** using a layered Data Warehouse architecture and a **Star Schema** dimensional model.
 
-**Author:** Mahdieh Karimi
+**Author:** Mahdieh Karimi Sahel Mahdavinejad
 **Role:** Data Warehouse Developer
 **Platform:** Microsoft SQL Server
 **Language:** T-SQL
