@@ -778,7 +778,7 @@ Examples include:
 ## Author
 
 **Mahdieh Karimi and Sahel Mahdavinejad** 
-Data Warehouse Developer
+Data Warehouse Developers
 
 **Repository:** `Data-Warehouse-with-SSMS`
 
